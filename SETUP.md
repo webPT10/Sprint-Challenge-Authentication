@@ -19,7 +19,7 @@
     > pass this into creating a new JWT > 
         > const token = jwt.sign(payload, process.env.JWT_SECRET)
 
-## FILE STRUCTURE 1 > index or server file
+## FILE STRUCTURE 1 > index file
 - touch server.js
 - server.js > add: 
     const express = require("express")
