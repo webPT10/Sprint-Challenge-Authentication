@@ -1,9 +1,12 @@
 const server = require('./api/server.js');
 const express = require("express")
+const welcomeRouter = require("./welcome/welcomeRouter")
 
 const PORT = process.env.PORT || 3300;
 
 server.use(express.json())
+
+server.use('/', welcomeRouter)
 
 server.use((error, req, res) => {
   console.log(error)
