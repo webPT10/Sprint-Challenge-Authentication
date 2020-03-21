@@ -88,3 +88,6 @@
         mergeParams:true
         })
         module.exports = router;
+---
+## INSTALL > jest
+> npm i --save-dev jest
