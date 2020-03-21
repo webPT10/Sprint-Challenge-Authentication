@@ -27,18 +27,32 @@ test("sanity", () => {
 //     expect(res.type).toBe("application/json");
 //   });
 
-// test("login User", async () => {
-//     const res = await supertest(server)
-//       .post("/auth/login")
-//       .send({
-//         username: "Mini2",
-//         password: "stuff"
-//       });
-//     expect(res.statusCode).toEqual(401);
-//     expect(res.type).toEqual("application/json");
-//     // expect(res.body.message).toEqual(`Hello, ${user.username}`);
-//     expect(res.body.message).toBe("Invalid Credentials.");
-//   });
+test("login User", async () => {
+    const res = await supertest(server)
+      .post("/auth/login")
+      .send({
+        username: "",
+        password: "stuff"
+      });
+    expect(res.statusCode).toBe(401);
+    expect(res.type).toBe("application/json");
+    // expect(res.body.message).toEqual(`Hello, ${user.username}`);
+    expect(res.body.message).toBe("Invalid Credentials.");
+  });
+
+  test("login User", async () => {
+    const res = await supertest(server)
+      .post("/auth/login")
+      .send({
+        username: "Mini2",
+        password: ""
+      });
+    expect(res.statusCode).toBe(401);
+    expect(res.type).toBe("application/json");
+    // expect(res.body.message).toEqual(`Hello, ${user.username}`);
+    expect(res.body.message).toBe("Invalid Credentials.");
+  });
+
 
 
 
@@ -64,6 +78,3 @@ test("sanity", () => {
 //         expect(res.body.username).toBe("Ford")
 //     })
 
-// afterAll(async () => {
-//     await db.destroy()
-// })

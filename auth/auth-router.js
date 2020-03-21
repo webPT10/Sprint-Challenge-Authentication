@@ -34,7 +34,7 @@ router.post('/login', async (req, res, next) => {
   try {
     const { username, password } = req.body
     if(!username || !password) {
-      return res.status(400).json(authError)
+      return res.status(401).json(authError)
     }
 
     const user = await Users.findBy({ username }).first()
@@ -43,8 +43,8 @@ router.post('/login', async (req, res, next) => {
     }
 
     const passwordValid = await bcrypt.compare(password, user.password)
-    if(passwordValid){
-      return res.status(401).json(authError)
+    if(!passwordValid){
+      return res.status(400).json(authError)
     }
 
     const payload = {
