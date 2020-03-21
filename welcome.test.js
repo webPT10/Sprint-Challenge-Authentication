@@ -2,10 +2,6 @@ const supertest = require("supertest")
 const db = require("./database/dbConfig")
 const server = require("./index")
 
-// beforeEach(async () => {
-// 	await db.seed.run()
-// })
-
 test("welcome route", async() => {
     const res = await supertest(server).get("/")
 
@@ -24,7 +20,3 @@ test("welcome route", async() => {
 //         expect(res.type).toBe("application/json")
 //         expect(res.body.name).toBe("Trigger")
 //     })
-
-// afterAll(async () => {
-//     await db.destroy()
-// })
