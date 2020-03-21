@@ -22,6 +22,9 @@ server.use((error, req, res) => {
   })
 })
 
-server.listen(PORT, () => {
-  console.log(`\n=== Server listening on port ${PORT} ===\n`);
-});
+if (!module.parent){ // supertest
+  server.listen(PORT, () => {
+    console.log(`\n=== Server listening on port ${PORT} ===\n`);
+  });
+}
+module.exports = server
