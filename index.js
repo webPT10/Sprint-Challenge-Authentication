@@ -1,12 +1,17 @@
 const server = require('./api/server.js');
 const express = require("express")
 const welcomeRouter = require("./welcome/welcomeRouter")
+const authRouter = require("./auth/auth-router")
+
+const cookieParser = require("cookie-parser")
 
 const PORT = process.env.PORT || 3300;
 
 server.use(express.json())
+server.use(cookieParser())
 
 server.use('/', welcomeRouter)
+server.use('/', authRouter)
 
 server.use((error, req, res) => {
   console.log(error)
