@@ -11,12 +11,3 @@ test("welcome route", async() => {
     expect(res.body.message).toHaveLength(30)
     expect(res.body.message).toMatch(/welcome/i)
 })
-
-// test("create users router", async() => {
-//         const res = await supertest(server)
-//             .post("/api/users")
-//             .send({ name: "Trigger" })
-//         expect(res.statusCode).toBe(201)
-//         expect(res.type).toBe("application/json")
-//         expect(res.body.name).toBe("Trigger")
-//     })
