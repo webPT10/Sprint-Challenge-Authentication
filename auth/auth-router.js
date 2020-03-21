@@ -9,6 +9,11 @@ const jwt = require("jsonwebtoken")
 //-------------------
 router.post('/register', async (req, res, next) => {
   try {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      return res.status(400).json({ message: "error, bad request" });
+    }
+    
     const saved = await Users.add(req.body)
     res.status(201).json(saved)
   } catch(error){

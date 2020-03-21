@@ -12,7 +12,7 @@ server.use(express.json())
 server.use(cookieParser())
 
 server.use('/', welcomeRouter)
-server.use('/', authRouter)
+server.use('/auth', authRouter)
 server.use('/jokes', jokeRouter)
 
 server.use((error, req, res) => {
