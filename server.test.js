@@ -1,16 +1,30 @@
-// test("a placeholder test", () => {
-//     expect(4+4).toBe(8)
+const supertest = require("supertest")
+const db = require("./database/dbConfig")
+const server = require("./index")
+
+// beforeEach(async () => {
+// 	await db.seed.run()
 // })
 
-const supertest = require("supertest")
-
-// our server wont actually start due to the if statement in index.js
-const server = require("./index")
-test("a placeholder test", async () => {
+test("welcome route", async() => {
     const res = await supertest(server).get("/")
-    console.log(res)
+
+    expect(res.statusCode).toBe(200)
+    expect(res.type).toBe("application/json")
+    expect(res.body.message).toBe("Welcome to the Welcome Router.")
+    expect(res.body.message).toHaveLength(30)
+    expect(res.body.message).toMatch(/welcome/i)
 })
-// test("a placeholder test", (done) => {
-//     expect(2+2).toBe(4)
-//     done()
+
+// test("create users router", async() => {
+//         const res = await supertest(server)
+//             .post("/api/users")
+//             .send({ name: "Trigger" })
+//         expect(res.statusCode).toBe(201)
+//         expect(res.type).toBe("application/json")
+//         expect(res.body.name).toBe("Trigger")
+//     })
+
+// afterAll(async () => {
+//     await db.destroy()
 // })
