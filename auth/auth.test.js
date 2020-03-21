@@ -7,25 +7,44 @@ test("sanity", () => {
   });
 
   // Register
-test("Register User", async () => {
-    const res = await supertest(server)
-      .post("/auth/register")
-      .send({
-        username: "Mini2",
-        password: "stuff"
-      });
-    expect(res.statusCode).toBe(201);
-    expect(res.type).toBe("application/json");
-    expect(res.body.username).toBe("Mini2");
-  });
+// test("Register User", async () => {
+//     const res = await supertest(server)
+//       .post("/auth/register")
+//       .send({
+//         username: "Mini2",
+//         password: "stuff"
+//       });
+//     expect(res.statusCode).toBe(201);
+//     expect(res.type).toBe("application/json");
+//     expect(res.body.username).toBe("Mini2");
+//   });
 
-  test("Failure to Register", async () => {
-    const res = await supertest(server)
-      .post("/auth/register")
-      .send({});
-    expect(res.statusCode).toBe(400);
-    expect(res.type).toBe("application/json");
-  });
+//   test("Failure to Register", async () => {
+//     const res = await supertest(server)
+//       .post("/auth/register")
+//       .send({});
+//     expect(res.statusCode).toBe(400);
+//     expect(res.type).toBe("application/json");
+//   });
+
+// test("login User", async () => {
+//     const res = await supertest(server)
+//       .post("/auth/login")
+//       .send({
+//         username: "Mini2",
+//         password: "stuff"
+//       });
+//     expect(res.statusCode).toEqual(401);
+//     expect(res.type).toEqual("application/json");
+//     // expect(res.body.message).toEqual(`Hello, ${user.username}`);
+//     expect(res.body.message).toBe("Invalid Credentials.");
+//   });
+
+
+
+
+
+
 
 // test("register-auth-test", async() => {
 //         const res = await supertest(server)

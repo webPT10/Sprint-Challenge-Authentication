@@ -13,7 +13,7 @@ router.post('/register', async (req, res, next) => {
     if (!username || !password) {
       return res.status(400).json({ message: "error, bad request" });
     }
-    
+
     const saved = await Users.add(req.body)
     res.status(201).json(saved)
   } catch(error){
@@ -33,13 +33,17 @@ router.post('/login', async (req, res, next) => {
 
   try {
     const { username, password } = req.body
+    if(!username || !password) {
+      return res.status(400).json(authError)
+    }
+
     const user = await Users.findBy({ username }).first()
     if(!user){
       return res.status(401).json(authError)
     }
 
     const passwordValid = await bcrypt.compare(password, user.password)
-    if(!passwordValid){
+    if(passwordValid){
       return res.status(401).json(authError)
     }
 
